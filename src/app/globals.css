@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main: #294ECB;
+  --gradient-primary: linear-gradient(45deg, #d946ef 0%, #d56dc8 25%, #8C60CA 75%, #3B51CB 100%);
+  --gradient-primary-horizontal: linear-gradient(to right, #d946ef 0%, #d56dc8 25%, #8C60CA 75%, #3B51CB 100%);
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  @apply m-0;
+}
+
+a, button {
+  @apply cursor-pointer;
+}
+
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  @apply rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-400;
+}
+
+@layer utilities {
+  .smoothness {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-primary-horizontal);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
