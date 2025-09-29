@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 export const StartWidget = () => {
   return (
@@ -12,13 +11,11 @@ export const StartWidget = () => {
         }
       ></div>
 
-      <Image
-        width={200}
-        height={200}
+      <img
         src={"/backgrounds/headerCircles.svg"}
         alt={"Header Circles"}
         loading={"lazy"}
-        draggable={"false"}
+        draggable={false}
         className={
           "absolute w-full opacity-40 aspect-square top-[-15%] left-[-40%] z-0 sm:-top-1/4 lg:-top-1/3 xl:left-[-30%]"
         }
@@ -74,27 +71,23 @@ export const StartWidget = () => {
                       "flex justify-center items-center w-full relative pl-[8%] lg:pl-0 lg:w-1/3"
                     }
                   >
-                    <Image
-                      width={100}
-                      height={100}
+                    <img
                       src={"/images/boy.svg"}
                       alt={"Boy"}
                       title={"Мы за разумный выбор и современный подход."}
                       loading={"lazy"}
-                      draggable={"false"}
+                      draggable={false}
                       className={"aspect-square w-1/2 lg:w-full"}
                     />
 
-                    <Image
-                      width={100}
-                      height={100}
+                    <img
                       src={"/images/girl.svg"}
                       alt={"Girl"}
                       title={
                         "Знаешь, что общего у твоей покупки и отличной формы?"
                       }
                       loading={"lazy"}
-                      draggable={"false"}
+                      draggable={false}
                       className={
                         "aspect-square w-1/2 relative right-[8%] lg:hidden"
                       }
@@ -107,16 +100,14 @@ export const StartWidget = () => {
                     "flex flex-col items-start gap-5 sm:gap-6 md:gap-8 lg:flex-row lg:items-center lg:justify-between"
                   }
                 >
-                  <Image
-                    width={100}
-                    height={100}
+                  <img
                     src={"/images/girl.svg"}
                     alt={"Girl"}
                     title={
                       "Знаешь, что общего у твоей покупки и отличной формы?"
                     }
                     loading={"lazy"}
-                    draggable={"false"}
+                    draggable={false}
                     className={"aspect-square hidden lg:block lg:w-1/3"}
                   />
 
@@ -138,13 +129,11 @@ export const StartWidget = () => {
                 "flex flex-col items-center justify-between gap-5 relative w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
               }
             >
-              <Image
-                width={300}
-                height={300}
+              <img
                 src={"/backgrounds/DDX.svg"}
                 alt={"DDX Logo"}
                 loading={"lazy"}
-                draggable={"false"}
+                draggable={false}
                 className={"absolute bottom-0 w-full sm:hidden"}
               />
 
@@ -206,14 +195,12 @@ export const StartWidget = () => {
                     </p>
                   </div>
 
-                  <Image
-                    width={100}
-                    height={100}
+                  <img
                     src={"/images/bracelet.svg"}
                     alt={"Браслет"}
                     title={"Браслет в DDX Fitness"}
                     loading={"lazy"}
-                    draggable={"false"}
+                    draggable={false}
                     className={
                       "h-32 w-auto absolute top-0 right-4 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
                     }

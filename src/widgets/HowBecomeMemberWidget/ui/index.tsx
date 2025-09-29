@@ -1,5 +1,4 @@
 import { Stepper } from "@/features";
-import Image from "next/image";
 
 export const HowBecomeMemberWidget = () => {
   return (
@@ -42,16 +41,14 @@ export const HowBecomeMemberWidget = () => {
                       "flex flex-col items-center gap-4 px-3 py-5 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
-                    <Image
-                      width={100}
-                      height={100}
+                    <img
                       src={"/icons/tbank.svg"}
                       alt={"Т-Банк"}
                       title={
                         "Сотрудники Т‑Банка зарегистрируют биометрию в ГИС ЕБС"
                       }
                       loading={"lazy"}
-                      draggable={"false"}
+                      draggable={false}
                       className={
                         "aspect-square w-14 md:w-16 xl:w-16 2xl:w-20 3xl:w-24"
                       }
@@ -86,16 +83,14 @@ export const HowBecomeMemberWidget = () => {
                       "flex flex-col items-center gap-4 px-3 py-5 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
-                    <Image
-                      width={100}
-                      height={100}
+                    <img
                       src={"/icons/ebs.svg"}
                       alt={"Единая Биометрическая Система"}
                       title={
                         "Зарегистрировать биометрию в ГИС ЕБС на портале ebs.ru"
                       }
                       loading={"lazy"}
-                      draggable={"false"}
+                      draggable={false}
                       className={
                         "aspect-square w-14 md:w-16 xl:w-16 2xl:w-20 3xl:w-24"
                       }

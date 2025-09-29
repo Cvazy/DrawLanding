@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Image from "next/image";
 import { IStepEntity } from "../models";
 
 export const StepEntity: FC<IStepEntity> = ({
@@ -12,14 +11,12 @@ export const StepEntity: FC<IStepEntity> = ({
     <div
       className={"flex flex-col items-center gap-3 w-full lg:gap-7 xl:gap-8"}
     >
-      <Image
-        width={100}
-        height={100}
+      <img
         src={imageSrc}
         alt={imageAlt}
         title={title}
         loading={"lazy"}
-        draggable={"false"}
+        draggable={false}
         className={"w-full"}
       />
 
