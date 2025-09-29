@@ -12,11 +12,13 @@ export const Stepper = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [userInteracting, setUserInteracting] = useState(false);
+  const [isInView, setIsInView] = useState(false);
 
   const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pauseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const clearTimers = useCallback(() => {
     if (autoPlayTimerRef.current) {
@@ -30,7 +32,7 @@ export const Stepper = () => {
   }, []);
 
   const startAutoPlay = useCallback(() => {
-    if (!isMobile) return;
+    if (!isMobile || !isInView) return;
 
     clearTimers();
     setIsAutoPlaying(true);
@@ -41,7 +43,7 @@ export const Stepper = () => {
         return nextIndex >= STEPPER_DATA.length ? 0 : nextIndex;
       });
     }, AUTOPLAY_INTERVAL);
-  }, [isMobile, clearTimers]);
+  }, [isMobile, isInView, clearTimers]);
 
   const pauseAutoPlay = useCallback(() => {
     setIsAutoPlaying(false);
@@ -67,14 +69,45 @@ export const Stepper = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobile && !userInteracting) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+
+        if (entry.isIntersecting && isMobile) {
+          setCurrentIndex(0);
+        }
+
+        if (!entry.isIntersecting) {
+          clearTimers();
+          setIsAutoPlaying(false);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: "-50px 0px",
+      },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [isMobile, clearTimers]);
+
+  useEffect(() => {
+    if (isMobile && !userInteracting && isInView) {
       startAutoPlay();
     } else {
       clearTimers();
     }
 
     return () => clearTimers();
-  }, [isMobile, userInteracting, startAutoPlay, clearTimers]);
+  }, [isMobile, userInteracting, isInView, startAutoPlay, clearTimers]);
 
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
@@ -109,6 +142,7 @@ export const Stepper = () => {
   if (!isMobile) {
     return (
       <div
+        ref={containerRef}
         className={
           "grid grid-cols-4 gap-5 w-full lg:px-4 xl:gap-8 2xl:gap-10 3xl:gap-14 4xl:gap-20"
         }
@@ -125,7 +159,7 @@ export const Stepper = () => {
   const totalItemWidth = itemWidth + spacing;
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div ref={containerRef} className="relative w-full overflow-hidden">
       <motion.div
         className="absolute inset-0 z-10"
         drag="x"

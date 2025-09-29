@@ -42,7 +42,7 @@ export const StartWidget = () => {
             >
               <h1
                 className={
-                  "text-white leading-tight text-left font-extrabold text-[28px] tracking-[-0.5px] min-[390px]:text-3xl min-[400px]:text-[33px] sm:text-5xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl"
+                  "text-white leading-tight text-left font-extrabold text-2xl min-[360px]:text-[28px] tracking-[-0.5px] min-[390px]:text-3xl min-[420px]:text-[33px] sm:text-5xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl"
                 }
               >
                 Подтверди возраст – <br />

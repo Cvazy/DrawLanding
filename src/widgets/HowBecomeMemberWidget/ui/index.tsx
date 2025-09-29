@@ -39,7 +39,7 @@ export const HowBecomeMemberWidget = () => {
                 >
                   <div
                     className={
-                      "flex flex-col items-center gap-4 px-5 py-10 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
+                      "flex flex-col items-center gap-4 px-3 py-5 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
                     <Image
@@ -59,7 +59,7 @@ export const HowBecomeMemberWidget = () => {
 
                     <p
                       className={
-                        "text-white text-center font-semibold text-sm xs:text-base sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
+                        "text-white text-center font-semibold text-base xs:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
                       }
                     >
                       На планшете в фитнес‑клубе сотрудники Т‑Банка
@@ -71,7 +71,7 @@ export const HowBecomeMemberWidget = () => {
 
                 <p
                   className={
-                    "text-main font-extrabold leading-tight text-base xs:text-lg sm:text-xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                    "gradient-text font-extrabold leading-tight text-2xl sm:text-3xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                   }
                 >
                   или
@@ -83,7 +83,7 @@ export const HowBecomeMemberWidget = () => {
                 >
                   <div
                     className={
-                      "flex flex-col items-center gap-4 px-5 py-10 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
+                      "flex flex-col items-center gap-4 px-3 py-5 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
                     <Image
@@ -103,10 +103,11 @@ export const HowBecomeMemberWidget = () => {
 
                     <p
                       className={
-                        "text-white text-center font-semibold text-sm xs:text-base sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
+                        "text-white text-center font-semibold text-base xs:text-lg sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
                       }
                     >
-                      → Зарегистрировать биометрию в ГИС ЕБС на портале{" "}
+                      → Зарегистрировать биометрию в ГИС ЕБС <br />→ Установить
+                      код подтверждения (пин-код) на портале{" "}
                       <a
                         href={"https://ebs.ru/"}
                         target={"_blank"}
@@ -114,8 +115,6 @@ export const HowBecomeMemberWidget = () => {
                       >
                         ebs.ru
                       </a>
-                      <br />
-                      → Установить код подтверждения (пин-код).
                       <br />→ Дать согласие на обработку биометрических данных.
                     </p>
                   </div>
@@ -124,7 +123,7 @@ export const HowBecomeMemberWidget = () => {
 
               <p
                 className={
-                  "gradient-text font-extrabold leading-tight text-base xs:text-lg sm:text-xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                  "gradient-text font-extrabold leading-tight text-2xl sm:text-3xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                 }
               >
                 далее
