@@ -106,8 +106,8 @@ export const HowBecomeMemberWidget = () => {
                         "text-white text-center font-semibold text-base xs:text-lg sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
                       }
                     >
-                      → Зарегистрировать биометрию в ГИС ЕБС <br />→ Установить
-                      код подтверждения (пин-код) на портале{" "}
+                      → Зарегистрировать биометрию <br /> в ГИС ЕБС <br />→
+                      Установить код подтверждения (пин-код) на портале{" "}
                       <a
                         href={"https://ebs.ru/"}
                         target={"_blank"}

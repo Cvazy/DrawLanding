@@ -26,6 +26,6 @@ export const STEPPER_DATA: IStepEntity[] = [
     step: 4,
     imageSrc: "/stepper/step-4.svg",
     imageAlt: "Успех!",
-    title: "Возраст подтверден! Можно произвести оплату",
+    title: "Возраст подтвержден! Можно произвести оплату",
   },
 ];
