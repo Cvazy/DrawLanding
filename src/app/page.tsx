@@ -3,7 +3,7 @@ import { SITE_NAME } from "@/app/constants";
 import { FooterWidget, HowBecomeMemberWidget, StartWidget } from "@/widgets";
 
 export const metadata: Metadata = {
-  title: "Главная" + SITE_NAME,
+  title: "Главная | " + SITE_NAME,
 };
 
 export default function Home() {
