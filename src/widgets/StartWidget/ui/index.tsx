@@ -215,7 +215,7 @@ export const StartWidget = () => {
                     loading={"lazy"}
                     draggable={"false"}
                     className={
-                      "h-32 w-auto absolute -top-4 right-4 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
+                      "h-32 w-auto absolute top-0 right-4 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
                     }
                   />
                 </div>
