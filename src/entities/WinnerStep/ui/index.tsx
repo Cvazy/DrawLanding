@@ -30,75 +30,58 @@ export const WinnerStep: FC<IWinnerStep> = ({
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [leftPx, setLeftPx] = useState<number | null>(null);
 
-  const calculatePosition = useCallback(() => {
+  const recompute = useCallback(() => {
     if (!getXForDocumentY || !containerRef.current || !imageRef.current) {
-      return null;
+      setLeftPx(null);
+      return;
     }
-    
     const imgRect = imageRef.current.getBoundingClientRect();
-    const containerRect = containerRef.current.getBoundingClientRect();
-    
     const documentY = imgRect.top + imgRect.height / 2 + window.scrollY;
     const documentXOnCircle = getXForDocumentY(documentY);
-    
-    if (documentXOnCircle == null) return null;
-    
+    if (documentXOnCircle == null) {
+      setLeftPx(null);
+      return;
+    }
+    const containerRect = containerRef.current.getBoundingClientRect();
     const containerLeft = containerRect.left + window.scrollX;
-    const iconCenterX = imgRect.left + window.scrollX + imgRect.width / 2;
-    const desiredIconCenterX = documentXOnCircle;
-    const deltaForIcon = desiredIconCenterX - iconCenterX;
-    
-    const boundaryEl = document.querySelector("[data-footer-boundary]") as HTMLElement | null;
+
+    const desiredContainerLeft = documentXOnCircle - imgRect.width / 2;
+    let delta = desiredContainerLeft - containerLeft;
+
+    const boundaryEl = document.querySelector(
+      "[data-footer-boundary]",
+    ) as HTMLElement | null;
     if (boundaryEl) {
       const boundaryRect = boundaryEl.getBoundingClientRect();
       const boundaryLeft = boundaryRect.left + window.scrollX;
       const boundaryRight = boundaryRect.right + window.scrollX;
 
-      const finalIconCenterX = iconCenterX + deltaForIcon;
+      const containerLeftAfter = containerLeft + delta;
+      const iconCenterAfter =
+        containerLeftAfter + (imgRect.left - containerLeft) + imgRect.width / 2;
       const minCenter = boundaryLeft + imgRect.width / 2;
       const maxCenter = boundaryRight - imgRect.width / 2;
 
-      if (finalIconCenterX < minCenter) {
-        return Math.round(deltaForIcon + (minCenter - finalIconCenterX));
-      } else if (finalIconCenterX > maxCenter) {
-        return Math.round(deltaForIcon - (finalIconCenterX - maxCenter));
+      if (iconCenterAfter < minCenter) {
+        delta += minCenter - iconCenterAfter;
+      } else if (iconCenterAfter > maxCenter) {
+        delta -= iconCenterAfter - maxCenter;
       }
     }
 
-    return Math.round(deltaForIcon);
+    setLeftPx(Math.round(delta));
   }, [getXForDocumentY]);
-
-  const recompute = useCallback(() => {
-    const newLeftPx = calculatePosition();
-    
-    if (newLeftPx !== null && leftPx !== null) {
-      const diff = Math.abs(newLeftPx - leftPx);
-      if (diff > 100) {
-        console.warn('Большое изменение позиции обнаружено:', diff, 'px. Игнорируем.');
-        return;
-      }
-    }
-    
-    setLeftPx(newLeftPx);
-  }, [calculatePosition, leftPx]);
 
   useEffect(() => {
     recompute();
-  }, [recompute]);
+  }, [recompute, description, imageSrc]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-    
     const onResize = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        recompute();
-      }, 100);
+      recompute();
     };
-    
     window.addEventListener("resize", onResize);
     return () => {
-      clearTimeout(timeoutId);
       window.removeEventListener("resize", onResize);
     };
   }, [recompute]);
