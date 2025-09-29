@@ -1,3 +1,5 @@
+import { Boy, Bracelet, Girl } from "@/shared";
+import Image from "next/image";
 
 export const StartWidget = () => {
   return (
@@ -71,25 +73,11 @@ export const StartWidget = () => {
                       "flex justify-center items-center w-full relative pl-[8%] lg:pl-0 lg:w-1/3"
                     }
                   >
-                    <img
-                      src={"/images/boy.svg"}
-                      alt={"Boy"}
-                      title={"Мы за разумный выбор и современный подход."}
-                      loading={"lazy"}
-                      draggable={false}
-                      className={"aspect-square w-1/2 lg:w-full"}
-                    />
+                    <Boy className={"aspect-square h-auto w-1/2 lg:w-full"} />
 
-                    <img
-                      src={"/images/girl.svg"}
-                      alt={"Girl"}
-                      title={
-                        "Знаешь, что общего у твоей покупки и отличной формы?"
-                      }
-                      loading={"lazy"}
-                      draggable={false}
+                    <Girl
                       className={
-                        "aspect-square w-1/2 relative right-[8%] lg:hidden"
+                        "aspect-square w-1/2 relative h-auto right-[8%] lg:hidden"
                       }
                     />
                   </div>
@@ -100,14 +88,16 @@ export const StartWidget = () => {
                     "flex flex-col items-start gap-5 sm:gap-6 md:gap-8 lg:flex-row lg:items-center lg:justify-between"
                   }
                 >
-                  <img
+                  <Image
+                    width={100}
+                    height={100}
                     src={"/images/girl.svg"}
                     alt={"Girl"}
                     title={
                       "Знаешь, что общего у твоей покупки и отличной формы?"
                     }
                     loading={"lazy"}
-                    draggable={false}
+                    draggable={"false"}
                     className={"aspect-square hidden lg:block lg:w-1/3"}
                   />
 
@@ -195,12 +185,7 @@ export const StartWidget = () => {
                     </p>
                   </div>
 
-                  <img
-                    src={"/images/bracelet.svg"}
-                    alt={"Браслет"}
-                    title={"Браслет в DDX Fitness"}
-                    loading={"lazy"}
-                    draggable={false}
+                  <Bracelet
                     className={
                       "h-32 w-auto absolute top-0 right-4 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
                     }

@@ -1,3 +1,4 @@
+import { EbsIconWithText, Logo } from "@/shared";
 
 export const Header = () => {
   return (
@@ -13,23 +14,9 @@ export const Header = () => {
               "relative flex items-center justify-between gap-5 w-full"
             }
           >
-            <img
-              src={"/images/logoFitvend.svg"}
-              alt={"Fitvend Logo"}
-              title={"Логотип Fitvend"}
-              loading={"lazy"}
-              draggable={false}
-              className={"w-40 md:w-44 lg:w-56 xl:w-64"}
-            />
+            <Logo className={"w-40 h-auto md:w-44 lg:w-56 xl:w-64"} />
 
-            <img
-              src={"/icons/ebsIconWithText.svg"}
-              alt={"EBS Logo"}
-              title={"Логотип Единой Биометрической системы"}
-              loading={"lazy"}
-              draggable={false}
-              className={"w-40 lg:block xl:w-64"}
-            />
+            <EbsIconWithText className={"w-40 h-auto lg:block xl:w-64"} />
           </div>
         </div>
       </div>
