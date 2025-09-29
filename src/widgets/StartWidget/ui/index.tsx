@@ -16,7 +16,7 @@ export const StartWidget = () => {
         width={200}
         height={200}
         src={"/backgrounds/headerCircles.svg"}
-        alt={"Circles"}
+        alt={"Header Circles"}
         loading={"lazy"}
         draggable={"false"}
         className={
