@@ -17,12 +17,12 @@ export const HowBecomeMemberWidget = () => {
           >
             <div
               className={
-                "flex flex-col items-center gap-10 w-full px-8 sm:gap-12 sm:px-10 md:gap-14 lg:gap-16 xl:gap-20 2xl:gap-24 3xl:gap-28"
+                "flex flex-col items-center gap-10 w-full px-5 sm:gap-12 sm:px-10 md:gap-14 lg:gap-16 xl:gap-20 2xl:gap-24 3xl:gap-28"
               }
             >
               <h2
                 className={
-                  "gradient-text leading-tight text-left font-extrabold text-xl xs:text-2xl sm:text-4xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl"
+                  "gradient-text leading-tight text-left font-extrabold text-[27px] xs:text-3xl sm:text-4xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl"
                 }
               >
                 Как стать участником
@@ -39,7 +39,7 @@ export const HowBecomeMemberWidget = () => {
                 >
                   <div
                     className={
-                      "flex flex-col items-center gap-4 p-5 w-full h-full xs:p-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
+                      "flex flex-col items-center gap-4 px-5 py-10 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
                     <Image
@@ -53,13 +53,13 @@ export const HowBecomeMemberWidget = () => {
                       loading={"lazy"}
                       draggable={"false"}
                       className={
-                        "aspect-square w-10 md:w-12 lg:w-14 xl:w-16 2xl:w-20 3xl:w-24"
+                        "aspect-square w-14 md:w-16 xl:w-16 2xl:w-20 3xl:w-24"
                       }
                     />
 
                     <p
                       className={
-                        "text-white text-center font-semibold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
+                        "text-white text-center font-semibold text-sm xs:text-base sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
                       }
                     >
                       На планшете в фитнес‑клубе сотрудники Т‑Банка
@@ -71,7 +71,7 @@ export const HowBecomeMemberWidget = () => {
 
                 <p
                   className={
-                    "text-main font-extrabold leading-tight text-sm xs:text-base sm:text-xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                    "text-main font-extrabold leading-tight text-base xs:text-lg sm:text-xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                   }
                 >
                   или
@@ -83,7 +83,7 @@ export const HowBecomeMemberWidget = () => {
                 >
                   <div
                     className={
-                      "flex flex-col items-center gap-4 p-5 w-full h-full xs:p-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
+                      "flex flex-col items-center gap-4 px-5 py-10 w-full h-full xs:px-6 sm:p-7 md:p-8 xl:p-10 2xl:p-12"
                     }
                   >
                     <Image
@@ -97,17 +97,25 @@ export const HowBecomeMemberWidget = () => {
                       loading={"lazy"}
                       draggable={"false"}
                       className={
-                        "aspect-square w-10 md:w-12 lg:w-14 xl:w-16 2xl:w-20 3xl:w-24"
+                        "aspect-square w-14 md:w-16 xl:w-16 2xl:w-20 3xl:w-24"
                       }
                     />
 
                     <p
                       className={
-                        "text-white text-center font-semibold text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
+                        "text-white text-center font-semibold text-sm xs:text-base sm:text-lg lg:text-xl 2xl:text-2xl 4xl:text-3xl"
                       }
                     >
-                      → Зарегистрировать биометрию в ГИС ЕБС на портале ebs.ru
-                      <br />→ Установить код подтверждения (пин-код).
+                      → Зарегистрировать биометрию в ГИС ЕБС на портале{" "}
+                      <a
+                        href={"https://ebs.ru/"}
+                        target={"_blank"}
+                        className={"text-[#38FFF9] underline"}
+                      >
+                        ebs.ru
+                      </a>
+                      <br />
+                      → Установить код подтверждения (пин-код).
                       <br />→ Дать согласие на обработку биометрических данных.
                     </p>
                   </div>
@@ -116,7 +124,7 @@ export const HowBecomeMemberWidget = () => {
 
               <p
                 className={
-                  "gradient-text font-extrabold leading-tight text-sm xs:text-base sm:text-xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                  "gradient-text font-extrabold leading-tight text-base xs:text-lg sm:text-xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                 }
               >
                 далее

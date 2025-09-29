@@ -8,7 +8,7 @@ export const StartWidget = () => {
     >
       <div
         className={
-          "bg-white absolute top-0 left-0 rounded-full z-10 shadow-[0_0_25dvw_25dvw_white]"
+          "bg-white absolute top-5 left-16 rounded-full z-10 shadow-[0_0_30dvw_30dvw_white] sm:top-8 xl:top-0 xl:left-[20%]"
         }
       ></div>
 
@@ -20,13 +20,13 @@ export const StartWidget = () => {
         loading={"lazy"}
         draggable={"false"}
         className={
-          "absolute top-[-20%] left-[-40%] w-full aspect-square z-0 sm:-top-1/4 sm:-left-1/4 2xl:-top-1/3 2xl:left-[-40%]"
+          "absolute w-full opacity-40 aspect-square top-[-15%] left-[-40%] z-0 sm:-top-1/4 lg:-top-1/3 xl:left-[-30%]"
         }
       />
 
       <div
         className={
-          "flex justify-center w-full px-8 pt-32 pb-2 relative z-20 sm:px-10 md:pt-40 xl:pt-64 2xl:pt-80 4xl:pt-96"
+          "flex justify-center w-full px-5 pt-32 pb-2 relative z-20 sm:px-10 md:pt-40 xl:pt-64 2xl:pt-80 4xl:pt-96"
         }
       >
         <div className={"w-full xl:max-w-limit"}>
@@ -42,10 +42,11 @@ export const StartWidget = () => {
             >
               <h1
                 className={
-                  "text-white leading-tight text-left font-extrabold text-2xl xs:text-3xl sm:text-5xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl"
+                  "text-white leading-tight text-left font-extrabold text-[28px] tracking-[-0.5px] min-[390px]:text-3xl min-[400px]:text-[33px] sm:text-5xl lg:text-7xl 2xl:text-8xl 4xl:text-9xl"
                 }
               >
-                Подтверди возраст – <br /> выиграй фитнес!
+                Подтверди возраст – <br />
+                выиграй фитнес!
               </h1>
 
               <div
@@ -149,12 +150,12 @@ export const StartWidget = () => {
 
               <div
                 className={
-                  "flex flex-col items-start z-1 gap-8 relative sm:items-center sm:gap-10 md:gap-12 lg:gap-14 2xl:gap-20"
+                  "flex flex-col items-start z-1 gap-8 relative w-full sm:items-center sm:gap-10 md:gap-12 lg:gap-14 2xl:gap-20"
                 }
               >
                 <h2
                   className={
-                    "relative z-10 text-white leading-tight text-left font-extrabold text-2xl sm:text-4xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl"
+                    "relative z-10 text-white leading-tight text-left font-extrabold text-[32px] sm:text-4xl lg:text-6xl 2xl:text-7xl 4xl:text-8xl"
                   }
                 >
                   Приз акции <br className={"sm:hidden"} />
@@ -169,7 +170,7 @@ export const StartWidget = () => {
                   <div className={"relative flex items-start gap-1"}>
                     <p
                       className={
-                        "leading-none text-white text-9xl font-extrabold sm:text-[144px] md:text-[176px] lg:text-[208px] xl:text-[256px] 2xl:text-[300px] 3xl:text-[352px] 4xl:text-[408px]"
+                        "leading-none text-white text-[162px] font-extrabold sm:text-[170px] md:text-[176px] lg:text-[208px] xl:text-[256px] 2xl:text-[300px] 3xl:text-[352px] 4xl:text-[408px]"
                       }
                     >
                       70
@@ -177,19 +178,19 @@ export const StartWidget = () => {
 
                     <div
                       className={
-                        "flex flex-col items-start mt-6 lg:mt-10 2xl:mt-14 3xl:mt-16"
+                        "flex flex-col items-start mt-12 lg:mt-10 2xl:mt-14 3xl:mt-16"
                       }
                     >
                       <p
                         className={
-                          "text-white leading-none font-extrabold text-xs xs:text-sm sm:text-base lg:text-2xl 2xl:text-3xl 4xl:text-4xl"
+                          "text-white leading-none font-extrabold text-base xs:text-lg sm:text-xl lg:text-2xl 2xl:text-3xl 4xl:text-4xl"
                         }
                       >
                         абонементов
                       </p>
                       <p
                         className={
-                          "text-white leading-none font-extrabold text-sm xs:text-base sm:text-lg lg:text-3xl 2xl:text-4xl 4xl:text-5xl"
+                          "text-white leading-none font-extrabold text-lg xs:text-xl sm:text-2xl lg:text-3xl 2xl:text-4xl 4xl:text-5xl"
                         }
                       >
                         категории
@@ -198,7 +199,7 @@ export const StartWidget = () => {
 
                     <p
                       className={
-                        "text-[#212438] absolute bottom-5 right-0 text-4xl leading-none font-extrabold sm:text-5xl lg:text-6xl lg:bottom-8 xl:text-7xl 2xl:text-[88px] 3xl:text-8xl 3xl:bottom-12 4xl:text-[112px]"
+                        "text-[#212438] absolute bottom-5 -right-3 text-5xl leading-none font-extrabold sm:text-5xl lg:text-6xl lg:bottom-8 xl:text-7xl 2xl:text-[88px] 3xl:text-8xl 3xl:bottom-12 4xl:text-[112px]"
                       }
                     >
                       Infinity
@@ -214,7 +215,7 @@ export const StartWidget = () => {
                     loading={"lazy"}
                     draggable={"false"}
                     className={
-                      "h-28 w-auto absolute -top-4 right-0 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
+                      "h-32 w-auto absolute -top-4 right-4 sm:h-32 md:h-40 md:static lg:h-48 xl:h-60 2xl:h-64 3xl:h-80 4xl:h-96"
                     }
                   />
                 </div>

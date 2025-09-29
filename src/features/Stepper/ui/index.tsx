@@ -1,14 +1,58 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, PanInfo } from "framer-motion";
 import { STEPPER_DATA } from "../models";
 import { StepEntity } from "@/entities";
+
+const AUTOPLAY_INTERVAL = 4000;
+const PAUSE_AFTER_INTERACTION = 5000;
 
 export const Stepper = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [userInteracting, setUserInteracting] = useState(false);
+
+  const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const pauseTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const clearTimers = useCallback(() => {
+    if (autoPlayTimerRef.current) {
+      clearInterval(autoPlayTimerRef.current);
+      autoPlayTimerRef.current = null;
+    }
+    if (pauseTimerRef.current) {
+      clearTimeout(pauseTimerRef.current);
+      pauseTimerRef.current = null;
+    }
+  }, []);
+
+  const startAutoPlay = useCallback(() => {
+    if (!isMobile) return;
+
+    clearTimers();
+    setIsAutoPlaying(true);
+
+    autoPlayTimerRef.current = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = prevIndex + 1;
+        return nextIndex >= STEPPER_DATA.length ? 0 : nextIndex;
+      });
+    }, AUTOPLAY_INTERVAL);
+  }, [isMobile, clearTimers]);
+
+  const pauseAutoPlay = useCallback(() => {
+    setIsAutoPlaying(false);
+    setUserInteracting(true);
+    clearTimers();
+
+    pauseTimerRef.current = setTimeout(() => {
+      setUserInteracting(false);
+      startAutoPlay();
+    }, PAUSE_AFTER_INTERACTION);
+  }, [startAutoPlay, clearTimers]);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -22,11 +66,23 @@ export const Stepper = () => {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  useEffect(() => {
+    if (isMobile && !userInteracting) {
+      startAutoPlay();
+    } else {
+      clearTimers();
+    }
+
+    return () => clearTimers();
+  }, [isMobile, userInteracting, startAutoPlay, clearTimers]);
+
   const handleDragEnd = (
     event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo,
   ) => {
     const threshold = 50;
+
+    pauseAutoPlay();
 
     if (info.offset.x > threshold && currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -35,6 +91,18 @@ export const Stepper = () => {
       currentIndex < STEPPER_DATA.length - 1
     ) {
       setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handleTouchStart = () => {
+    if (isMobile) {
+      pauseAutoPlay();
+    }
+  };
+
+  const handleMouseDown = () => {
+    if (isMobile) {
+      pauseAutoPlay();
     }
   };
 
@@ -63,6 +131,8 @@ export const Stepper = () => {
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         onDragEnd={handleDragEnd}
+        onTouchStart={handleTouchStart}
+        onMouseDown={handleMouseDown}
         dragElastic={0.1}
         style={{
           touchAction: "pan-y",
@@ -77,8 +147,9 @@ export const Stepper = () => {
         }}
         transition={{
           type: "spring",
-          stiffness: 300,
-          damping: 30,
+          stiffness: 200,
+          damping: 40,
+          mass: 1.2,
         }}
       >
         {STEPPER_DATA.map((step, index) => {
@@ -99,8 +170,11 @@ export const Stepper = () => {
                 opacity: isActive ? 1 : 0.85,
               }}
               transition={{
-                duration: 0.3,
-                ease: "easeOut",
+                duration: 0.6,
+                ease: "easeInOut",
+                type: "spring",
+                stiffness: 150,
+                damping: 25,
               }}
             >
               <div className="w-full">
