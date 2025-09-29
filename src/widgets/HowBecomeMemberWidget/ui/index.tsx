@@ -71,7 +71,7 @@ export const HowBecomeMemberWidget = () => {
 
                 <p
                   className={
-                    "gradient-text font-extrabold leading-tight text-2xl sm:text-3xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                    "gradient-text font-extrabold leading-tight text-3xl sm:text-4xl lg:self-center lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                   }
                 >
                   или
@@ -123,7 +123,7 @@ export const HowBecomeMemberWidget = () => {
 
               <p
                 className={
-                  "gradient-text font-extrabold leading-tight text-2xl sm:text-3xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
+                  "gradient-text font-extrabold leading-tight text-3xl sm:text-4xl lg:text-3xl 2xl:text-5xl 4xl:text-6xl"
                 }
               >
                 далее
