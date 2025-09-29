@@ -24,6 +24,13 @@ a, button {
   @apply cursor-pointer;
 }
 
+@media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  img[src$=".svg"] {
+    image-rendering: -webkit-optimize-contrast;
+    transform: translateZ(0);
+  }
+}
+
 ::-webkit-scrollbar {
   @apply w-2;
 }
