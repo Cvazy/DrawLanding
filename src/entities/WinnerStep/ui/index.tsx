@@ -84,7 +84,7 @@ export const WinnerStep: FC<IWinnerStep> = ({
 
   useEffect(() => {
     recompute();
-  }, [recompute, description, imageSrc]);
+  }, [recompute]);
 
   useEffect(() => {
     const onResize = () => {
