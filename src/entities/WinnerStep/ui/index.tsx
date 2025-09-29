@@ -30,14 +30,6 @@ export const WinnerStep: FC<IWinnerStep> = ({
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [leftPx, setLeftPx] = useState<number | null>(null);
 
-  const getBaseIconSize = useCallback(() => {
-    const width = window.innerWidth;
-    if (width >= 1536) return 128; // 2xl:w-32
-    if (width >= 768) return 96;   // md:w-24  
-    if (width >= 640) return 64;   // sm:w-16
-    return 40; // w-10
-  }, []);
-
   const recompute = useCallback(() => {
     if (!getXForDocumentY || !containerRef.current || !imageRef.current) {
       setLeftPx(null);
@@ -51,11 +43,14 @@ export const WinnerStep: FC<IWinnerStep> = ({
       return;
     }
     
-    const baseIconSize = getBaseIconSize();
     const containerRect = containerRef.current.getBoundingClientRect();
     const containerLeft = containerRect.left + window.scrollX;
-
-    const desiredContainerLeft = documentXOnCircle - baseIconSize / 2;
+    
+    const realIconWidth = imgRect.width;
+    
+    const iconCenterOffsetInContainer = (imgRect.left - containerLeft) + realIconWidth / 2;
+    
+    const desiredContainerLeft = documentXOnCircle - iconCenterOffsetInContainer;
     let delta = desiredContainerLeft - containerLeft;
 
     const boundaryEl = document.querySelector(
@@ -67,10 +62,9 @@ export const WinnerStep: FC<IWinnerStep> = ({
       const boundaryRight = boundaryRect.right + window.scrollX;
 
       const containerLeftAfter = containerLeft + delta;
-      const iconCenterAfter =
-        containerLeftAfter + (imgRect.left - containerLeft) + baseIconSize / 2;
-      const minCenter = boundaryLeft + baseIconSize / 2;
-      const maxCenter = boundaryRight - baseIconSize / 2;
+      const iconCenterAfter = containerLeftAfter + iconCenterOffsetInContainer;
+      const minCenter = boundaryLeft + realIconWidth / 2;
+      const maxCenter = boundaryRight - realIconWidth / 2;
 
       if (iconCenterAfter < minCenter) {
         delta += minCenter - iconCenterAfter;
@@ -80,7 +74,7 @@ export const WinnerStep: FC<IWinnerStep> = ({
     }
 
     setLeftPx(Math.round(delta));
-  }, [getXForDocumentY, getBaseIconSize]);
+  }, [getXForDocumentY]);
 
   useEffect(() => {
     recompute();
