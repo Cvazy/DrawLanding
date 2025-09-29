@@ -45,7 +45,7 @@ export const FooterWidget = () => {
           loading={"eager"}
           draggable={"false"}
           className={
-            "absolute top-16 left-[-70%] w-full aspect-square z-0 sm:top-20 sm:left-[-60%] lg:top-8"
+            "opacity-40 absolute top-16 left-[-70%] w-full aspect-square z-0 sm:top-20 sm:left-[-60%] lg:top-8"
           }
         />
 
