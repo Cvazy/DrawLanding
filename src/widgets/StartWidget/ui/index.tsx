@@ -135,7 +135,7 @@ export const StartWidget = () => {
 
             <div
               className={
-                "flex flex-col items-center justify-between gap-12 relative w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
+                "flex flex-col items-center justify-between gap-5 relative w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
               }
             >
               <Image
