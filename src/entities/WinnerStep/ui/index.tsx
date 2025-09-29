@@ -30,61 +30,79 @@ export const WinnerStep: FC<IWinnerStep> = ({
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [leftPx, setLeftPx] = useState<number | null>(null);
 
-  const recompute = useCallback(() => {
+  const calculatePosition = useCallback(() => {
     if (!getXForDocumentY || !containerRef.current || !imageRef.current) {
-      setLeftPx(null);
-      return;
+      return null;
     }
+    
     const imgRect = imageRef.current.getBoundingClientRect();
+    const containerRect = containerRef.current.getBoundingClientRect();
+    
     const documentY = imgRect.top + imgRect.height / 2 + window.scrollY;
     const documentXOnCircle = getXForDocumentY(documentY);
-    if (documentXOnCircle == null) {
-      setLeftPx(null);
-      return;
-    }
-    const containerRect = containerRef.current.getBoundingClientRect();
+    
+    if (documentXOnCircle == null) return null;
+    
     const containerLeft = containerRect.left + window.scrollX;
-
-    const desiredContainerLeft = documentXOnCircle - imgRect.width / 2;
-    let delta = desiredContainerLeft - containerLeft;
-
-    const boundaryEl = document.querySelector(
-      "[data-footer-boundary]",
-    ) as HTMLElement | null;
+    const iconCenterX = imgRect.left + window.scrollX + imgRect.width / 2;
+    const desiredIconCenterX = documentXOnCircle;
+    const deltaForIcon = desiredIconCenterX - iconCenterX;
+    
+    const boundaryEl = document.querySelector("[data-footer-boundary]") as HTMLElement | null;
     if (boundaryEl) {
       const boundaryRect = boundaryEl.getBoundingClientRect();
       const boundaryLeft = boundaryRect.left + window.scrollX;
       const boundaryRight = boundaryRect.right + window.scrollX;
 
-      const containerLeftAfter = containerLeft + delta;
-      const iconCenterAfter =
-        containerLeftAfter + (imgRect.left - containerLeft) + imgRect.width / 2;
+      const finalIconCenterX = iconCenterX + deltaForIcon;
       const minCenter = boundaryLeft + imgRect.width / 2;
       const maxCenter = boundaryRight - imgRect.width / 2;
 
-      if (iconCenterAfter < minCenter) {
-        delta += minCenter - iconCenterAfter;
-      } else if (iconCenterAfter > maxCenter) {
-        delta -= iconCenterAfter - maxCenter;
+      if (finalIconCenterX < minCenter) {
+        return Math.round(deltaForIcon + (minCenter - finalIconCenterX));
+      } else if (finalIconCenterX > maxCenter) {
+        return Math.round(deltaForIcon - (finalIconCenterX - maxCenter));
       }
     }
 
-    setLeftPx(Math.round(delta));
+    return Math.round(deltaForIcon);
   }, [getXForDocumentY]);
+
+  const recompute = useCallback(() => {
+    const newLeftPx = calculatePosition();
+    
+    if (newLeftPx !== null && leftPx !== null) {
+      const diff = Math.abs(newLeftPx - leftPx);
+      if (diff > 100) {
+        console.warn('Большое изменение позиции обнаружено:', diff, 'px. Игнорируем.');
+        return;
+      }
+    }
+    
+    setLeftPx(newLeftPx);
+  }, [calculatePosition, leftPx]);
 
   useEffect(() => {
     recompute();
-  }, [recompute, description, imageSrc]);
+  }, [recompute]);
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    
     const onResize = () => {
-      recompute();
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        recompute();
+      }, 100);
     };
+    
     window.addEventListener("resize", onResize);
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener("resize", onResize);
     };
   }, [recompute]);
+
 
   const transformStyle = useMemo(() => {
     return leftPx == null
@@ -97,7 +115,7 @@ export const WinnerStep: FC<IWinnerStep> = ({
       <div
         ref={containerRef}
         style={transformStyle}
-        className={`flex items-center relative gap-5 w-fit sm:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 3xl:gap-12 transition-transform duration-1000 ease-in-out`}
+        className={`flex items-center relative gap-5 w-fit sm:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 3xl:gap-12 transition-all duration-[1200ms] ease-[cubic-bezier(0.4, 0.0, 0.2, 1)]`}
       >
         <Image
           ref={imageRef as any}
@@ -108,11 +126,11 @@ export const WinnerStep: FC<IWinnerStep> = ({
           title={title}
           loading={"lazy"}
           draggable={"false"}
-          className={`aspect-square ${iconSizes[size]} transition-all duration-1000 ease-in-out`}
+          className={`aspect-square ${iconSizes[size]} transition-all duration-[1200ms] ease-[cubic-bezier(0.4, 0.0, 0.2, 1)]`}
         />
 
         <div
-          className={`text-white text-left font-extrabold ${textSizes[size]} transition-all duration-1000 ease-in-out`}
+          className={`text-white text-left font-extrabold ${textSizes[size]} transition-all duration-[1200ms] ease-[cubic-bezier(0.4, 0.0, 0.2, 1)]`}
         >
           {description
             .split(/(<br[^>]*\/>)/gi)
