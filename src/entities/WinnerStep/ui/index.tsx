@@ -20,9 +20,9 @@ export const WinnerStep: FC<IWinnerStep> = ({
   };
 
   const textSizes = {
-    small: "text-3xs pr-4 sm:pr-0 sm:text-2xs md:text-sm 2xl:text-base",
+    small: "text-3xs pr-24 sm:pr-0 sm:text-2xs md:text-sm 2xl:text-base",
     medium: "text-2xs pr-20 sm:pr-0 sm:text-xs md:text-base 2xl:text-lg",
-    large: "text-sm pr-8 sm:text-base md:text-xl 2xl:text-2xl",
+    large: "text-sm pr-24 sm:text-base md:text-xl 2xl:text-2xl",
   };
 
   const getXForDocumentY = useFooterCircle();
@@ -74,7 +74,7 @@ export const WinnerStep: FC<IWinnerStep> = ({
 
   useEffect(() => {
     recompute();
-  }, [recompute, size, description, imageSrc]);
+  }, [recompute, description, imageSrc]);
 
   useEffect(() => {
     const onResize = () => {
@@ -97,7 +97,7 @@ export const WinnerStep: FC<IWinnerStep> = ({
       <div
         ref={containerRef}
         style={transformStyle}
-        className={`flex items-center relative gap-5 w-fit sm:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 3xl:gap-12`}
+        className={`flex items-center relative gap-5 w-fit sm:gap-6 lg:gap-7 xl:gap-8 2xl:gap-10 3xl:gap-12 transition-transform duration-1000 ease-in-out`}
       >
         <Image
           ref={imageRef as any}
@@ -108,11 +108,11 @@ export const WinnerStep: FC<IWinnerStep> = ({
           title={title}
           loading={"lazy"}
           draggable={"false"}
-          className={`aspect-square ${iconSizes[size]}`}
+          className={`aspect-square ${iconSizes[size]} transition-all duration-1000 ease-in-out`}
         />
 
         <div
-          className={`text-white text-left font-extrabold ${textSizes[size]}`}
+          className={`text-white text-left font-extrabold ${textSizes[size]} transition-all duration-1000 ease-in-out`}
         >
           {description
             .split(/(<br[^>]*\/>)/gi)

@@ -3,11 +3,34 @@
 import { FOOTER_WIDGET_DATA } from "../models";
 import { WinnerStep } from "@/entities/WinnerStep";
 import { FooterCircleContext } from "@/shared/footerCircleContext";
-import { useCallback, useMemo, useRef } from "react";
+import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { IWinnerStep } from "@/entities/WinnerStep/models";
 
 export const FooterWidget = () => {
   const circleImgRef = useRef<HTMLImageElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const sizeRotation: Array<"small" | "medium" | "large"> = [
+    "large",
+    "medium",
+    "small",
+  ];
+
+  const dynamicData: IWinnerStep[] = useMemo(() => {
+    return FOOTER_WIDGET_DATA.map((item, index) => ({
+      ...item,
+      size: sizeRotation[(index - activeIndex + 3) % 3],
+    }));
+  }, [activeIndex]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 3);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const getXForDocumentY = useCallback((documentY: number) => {
     if (!circleImgRef.current) return null;
@@ -61,7 +84,7 @@ export const FooterWidget = () => {
             >
               <h3
                 className={
-                  "text-white leading-tight text-center font-extrabold text-lg xs:text-xl sm:text-3xl lg:text-5xl 2xl:text-6xl 4xl:text-7xl"
+                  "text-white leading-tight text-center font-extrabold text-xl xs:text-[22px] sm:text-3xl lg:text-5xl 2xl:text-6xl 4xl:text-7xl"
                 }
               >
                 Как определяется победитель
@@ -72,7 +95,7 @@ export const FooterWidget = () => {
                   "flex flex-col items-start gap-12 w-full sm:gap-14 lg:gap-16 xl:gap-20 2xl:gap-24 3xl:gap-28"
                 }
               >
-                {FOOTER_WIDGET_DATA.map((item) => (
+                {dynamicData.map((item, index) => (
                   <WinnerStep key={item.title} {...item} />
                 ))}
               </div>

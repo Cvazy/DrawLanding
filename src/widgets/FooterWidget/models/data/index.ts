@@ -15,7 +15,7 @@ export const FOOTER_WIDGET_DATA: IWinnerStep[] = [
     imageSrc: "/icons/success.svg",
     imageAlt: "Success Icon",
     description:
-      "Все выбранные участники проходят<br className={'hidden sm:block'} />проверку: подтверждается, что они<br className={'hidden sm:block'} />совершили транзакцию с использованием<br className={'hidden sm:block'} />биометрии в период проведения акции.",
+      "Все выбранные участники проходят<br className={'hidden sm:block'} />проверку: подтверждается, что они<br className={'hidden sm:block'} />совершили транзакцию с использованием<br className={'hidden sm:block'} /> биометрии в период проведения акции.",
     size: "medium",
   },
 
