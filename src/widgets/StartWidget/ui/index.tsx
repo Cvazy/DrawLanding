@@ -9,7 +9,7 @@ export const StartWidget = () => {
     >
       <div
         className={
-          "bg-white absolute top-5 left-16 rounded-full z-10 shadow-[0_0_30dvw_30dvw_white] sm:top-8 lg:shadow-[0_0_25dvw_25dvw_white] xl:top-0 xl:left-[20%] 2xl:lg:shadow-[0_0_18dvw_18dvw_white]"
+          "bg-white absolute top-5 left-16 rounded-full z-10 shadow-[0_0_30dvw_30dvw_white] sm:top-8 lg:shadow-[0_0_25dvw_25dvw_white] xl:top-0 xl:left-[20%] 2xl:lg:shadow-[0_0_18dvw_18dvw_white] w-1 h-1"
         }
       ></div>
 
