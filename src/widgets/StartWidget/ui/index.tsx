@@ -30,13 +30,13 @@ export const StartWidget = () => {
 
       <div
         className={
-          "flex justify-center w-full px-5 pt-32 pb-2 relative z-20 sm:px-10 md:pt-40 xl:pt-64 2xl:pt-80 4xl:pt-96"
+          "flex justify-center w-full px-5 pt-32 relative z-20 sm:px-10 md:pt-40 xl:pt-64 2xl:pt-80 4xl:pt-96"
         }
       >
         <div className={"w-full xl:max-w-limit"}>
           <div
             className={
-              "flex flex-col items-center gap-5 w-full xs:gap-6 sm:gap-8 md:gap-9 lg:gap-10 xl:gap-12 2xl:gap-20 3xl:gap-24 4xl:gap-28"
+              "flex flex-col items-center gap-5 w-full overflow-hidden xs:gap-6 sm:gap-8 md:gap-9 lg:gap-10 xl:gap-12 2xl:gap-20 3xl:gap-24 4xl:gap-28"
             }
           >
             <div
@@ -121,15 +121,15 @@ export const StartWidget = () => {
 
             <div
               className={
-                "flex flex-col items-center justify-between gap-5 relative overflow-hidden w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
+                "flex flex-col items-center justify-between gap-5 relative w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
               }
             >
               <img
-                src={"/backgrounds/DDX.svg"}
+                src={"/backgrounds/DDX_white.svg"}
                 alt={"DDX Logo"}
                 loading={"lazy"}
                 draggable={false}
-                className={"absolute bottom-0 w-full sm:top-0"}
+                className={"absolute bottom-0 opacity-15 w-full sm:top-[-5%]"}
               />
 
               <div
@@ -200,7 +200,7 @@ export const StartWidget = () => {
 
               <div
                 className={
-                  "bg-[#E42719] relative z-1 rounded sm:max-w-limit sm:rounded-md xl:rounded-lg lg:max-w-[60%] 3xl:rounded-xl"
+                  "bg-[#E42719] mb-2 relative z-1 rounded sm:max-w-limit sm:rounded-md xl:rounded-lg lg:max-w-[60%] 3xl:rounded-xl"
                 }
               >
                 <div
