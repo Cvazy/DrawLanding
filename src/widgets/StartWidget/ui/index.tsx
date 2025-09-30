@@ -9,8 +9,13 @@ export const StartWidget = () => {
     >
       <div
         className={
-          "bg-white absolute top-5 left-16 rounded-full z-10 shadow-[0_0_30dvw_30dvw_white] sm:top-8 lg:shadow-[0_0_25dvw_25dvw_white] xl:top-0 xl:left-[20%] 2xl:lg:shadow-[0_0_18dvw_18dvw_white] w-1 h-1"
+          "absolute top-0 left-16 z-10 blur-xl xl:left-[20%] w-[60vw] h-[60vw] sm:w-[33vw] sm:h-[33vw] md:blur-2xl lg:w-[36vw] lg:h-[36vw] rounded-full 2xl:blur-3xl 3xl:w-[30vw] 3xl:h-[30vw] 3xl:top-[3%]"
         }
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 20%, rgba(255,255,255,0.99) 25%, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.96) 35%, rgba(255,255,255,0.94) 40%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0.89) 50%, rgba(255,255,255,0.86) 55%, rgba(255,255,255,0.82) 60%, rgba(255,255,255,0.78) 65%, rgba(255,255,255,0.73) 70%, rgba(255,255,255,0.68) 75%, rgba(255,255,255,0.62) 80%, rgba(255,255,255,0.56) 85%, rgba(255,255,255,0.49) 90%, rgba(255,255,255,0.42) 95%, rgba(255,255,255,0.34) 98%, rgba(255,255,255,0.25) 99%, rgba(255,255,255,0.15) 99.5%, rgba(255,255,255,0.08) 99.8%, rgba(255,255,255,0) 100%)",
+          transform: "translate(-50%, -50%)",
+        }}
       ></div>
 
       <img
