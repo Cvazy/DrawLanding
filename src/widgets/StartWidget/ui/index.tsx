@@ -121,7 +121,7 @@ export const StartWidget = () => {
 
             <div
               className={
-                "flex flex-col items-center justify-between gap-5 relative w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
+                "flex flex-col items-center justify-between gap-5 relative overflow-hidden w-full sm:gap-16 md:gap-20 lg:gap-24 2xl:gap-32 3xl:gap-36"
               }
             >
               <img
@@ -129,7 +129,7 @@ export const StartWidget = () => {
                 alt={"DDX Logo"}
                 loading={"lazy"}
                 draggable={false}
-                className={"absolute bottom-0 w-full sm:hidden"}
+                className={"absolute bottom-0 w-full sm:top-0"}
               />
 
               <div
