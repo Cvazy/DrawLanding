@@ -6,7 +6,7 @@ export const FOOTER_WIDGET_DATA: IWinnerStep[] = [
     imageSrc: "/icons/telegram.svg",
     imageAlt: "Telegram Icon",
     description:
-      "Победители выбираются случайным<br className={'hidden sm:block'} />образом через Telegram-бота среди<br className={'hidden sm:block'} />участников акции.",
+      "Победители выбираются случайным <br className={'hidden sm:block'} />образом через Telegram-бота среди<br className={'hidden sm:block'} />участников акции.",
     size: "large",
   },
 
@@ -15,7 +15,7 @@ export const FOOTER_WIDGET_DATA: IWinnerStep[] = [
     imageSrc: "/icons/success.svg",
     imageAlt: "Success Icon",
     description:
-      "Все выбранные участники проходят<br className={'hidden sm:block'} />проверку: подтверждается, что они<br className={'hidden sm:block'} />совершили транзакцию с использованием<br className={'hidden sm:block'} /> биометрии в период проведения акции.",
+      "Все выбранные участники проходят <br className={'hidden sm:block'} />проверку: подтверждается, что они <br className={'hidden sm:block'} />совершили транзакцию с использованием <br className={'hidden sm:block'} />биометрии в период проведения акции.",
     size: "medium",
   },
 
@@ -24,7 +24,7 @@ export const FOOTER_WIDGET_DATA: IWinnerStep[] = [
     imageSrc: "/icons/cert.svg",
     imageAlt: "Certificate Icon",
     description:
-      "Победителям направляются<br className={'hidden sm:block'} />сертификаты.",
+      "Победителям направляются <br className={'hidden sm:block'} />сертификаты.",
     size: "small",
   },
 ];
